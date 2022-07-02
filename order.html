@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Order | Bethany's Pie Shop</title>
     <link rel="stylesheet" href="site.css" type="text/css" />
-    <script type="text/javascript" src="scripts/jquery-3.6.0.js"></script>
     <style>
       @media only screen and (min-width: 768px) {
         article {
@@ -186,30 +185,7 @@
         </ul>
       </nav>
     </footer>
-    <script type="text/javascript">
-
-      $((/* jQuery ready */) => {
-        const order = localStorage.getItem("order");
-        const pieOrder = JSON.parse(order);
-
-        if (order) {
-          const $pie = $(".pie");
-          const $title = $pie.find(".title");
-          const $price = $pie.find(".price");
-          const $desc = $pie.find(".desc");
-          const $orderInput = $("#pie-order");
-
-          $title.text(pieOrder.title);
-          $price.text(pieOrder.price);
-          $desc.text(pieOrder.desc);
-
-          $orderInput.value = order;
-
-          const $img = $pie.find("img");
-          $img.attr("src", `images/${pieOrder.id}.png`);
-          $img.attr("alt", pieOrder.title);
-        }
-      });
+    <script>
     </script>
   </body>
 </html>

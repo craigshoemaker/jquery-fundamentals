@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Pies | Bethany's Pie Shop</title>
     <link rel="stylesheet" href="site.css" type="text/css" />
-    <script type="text/javascript" src="scripts/jquery-3.6.0.js"></script>
   </head>
   <body>
     <header>
@@ -44,51 +43,5 @@
     </footer>
   </body>
   <script>
-
-    $((/* jQuery ready */) => {
-
-      $pies = $("#pies");
-
-      let getTemplate = (item) => `
-      <div class="pie">
-        <img src="images/${item.id}.png" alt="${item.description}" />
-        <div class="columns">
-          <div class="title">${item.title}</div>
-          <div class="price">$${item.price}</div>
-        </div>
-        <p class="desc">${item.description}</p>
-        <button data-id="${item.id}">Order</button>
-      </div>`;
-
-      $.get("/data/pies.json")
-        .done((data) => {
-
-          data.forEach((item) => {
-            $pies.append(getTemplate(item));
-          });
-
-          $orderButtons = $("button[data-id]");
-
-          $orderButtons.click((e) => {
-
-            $button = $(e.currentTarget);
-            $parent = $button.parent();
-
-            const order = {
-              id: $button.data("id"),
-              title: $parent.find(".title").text(),
-              price: $parent.find(".price").text(),
-              desc: $parent.find(".desc").text()
-            };
-
-            localStorage.setItem("order", JSON.stringify(order));
-
-            const url = window.location.href.replace("pies.html", "order.html");
-            window.location.href = url;
-
-          });
-
-        });
-    });
   </script>
 </html>
