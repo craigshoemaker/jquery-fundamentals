@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Order | Bethany's Pie Shop</title>
     <link rel="stylesheet" href="site.css" type="text/css" />
+    <script type="text/javascript" src="scripts/jquery-3.6.0.js"></script>
     <style>
       @media only screen and (min-width: 768px) {
         article {
@@ -187,47 +188,26 @@
     </footer>
     <script type="text/javascript">
 
-      window.addEventListener("DOMContentLoaded", function(e) {
-
-        let locationBox = document.querySelector("#location");
-        let location = {
-          latitude: "unknown",
-          longitude: "unknown"
-        };
-
-        window.navigator.geolocation.getCurrentPosition(
-          function(position) {
-
-            location = {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
-            };
-
-            locationBox.value = JSON.stringify(location);
-          },
-          function(error) {
-            locationBox.value = JSON.stringify(location);
-          });
-
+      $((/* jQuery ready */) => {
         const order = localStorage.getItem("order");
         const pieOrder = JSON.parse(order);
 
         if (order) {
-          const pie = document.querySelector(".pie");
-          const title = pie.querySelector(".title");
-          const price = pie.querySelector(".price");
-          const desc = pie.querySelector(".desc");
-          const orderInput = document.querySelector("#pie-order");
+          const $pie = $(".pie");
+          const $title = $pie.find(".title");
+          const $price = $pie.find(".price");
+          const $desc = $pie.find(".desc");
+          const $orderInput = $("#pie-order");
 
-          title.innerText = pieOrder.title;
-          price.innerText = pieOrder.price;
-          desc.innerText = pieOrder.desc;
+          $title.text(pieOrder.title);
+          $price.text(pieOrder.price);
+          $desc.text(pieOrder.desc);
 
-          orderInput.value = order;
+          $orderInput.value = order;
 
-          const img = pie.querySelector("img");
-          img.setAttribute("src", `images/${pieOrder.id}.png`);
-          img.setAttribute("alt", pieOrder.title);
+          const $img = $pie.find("img");
+          $img.attr("src", `images/${pieOrder.id}.png`);
+          $img.attr("alt", pieOrder.title);
         }
       });
     </script>

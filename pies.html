@@ -26,27 +26,10 @@
       <article>
         <h1>Pies</h1>
 
-        <section class="columns-desktop">
-          <div class="pie">
-            <img src="images/apple-pie.png" alt="Apple Pie" />
-            <div class="columns">
-              <div class="title">Apple Pie</div>
-              <div class="price">$12.95</div>
-            </div>
-            <p class="desc">Our famous apple pie</p>
-            <button data-order="apple-pie">Order</button>
-          </div>
-
-          <div class="pie">
-            <img src="images/cherry-pie.png" alt="Chery Pie" />
-            <div class="columns">
-              <div class="title">Cherry Pie</div>
-              <div class="price">$15.95</div>
-            </div>
-            <p class="desc">A summer classic!</p>
-            <button data-order="cherry-pie">Order</button>
-          </div>
+        <section class="columns-desktop" id="pies">
+          <!-- Generated HTML goes here -->
         </section>
+
       </article>
     </main>
 
@@ -61,28 +44,51 @@
     </footer>
   </body>
   <script>
-    window.addEventListener("DOMContentLoaded", function(e) {
-      const orderButtons = document.querySelectorAll("button[data-order]");
 
-      orderButtons.forEach(function(button) {
-        
-        button.addEventListener("click", function(e) {
-          const button = e.currentTarget;
-          const container = button.parentNode;
+    $((/* jQuery ready */) => {
 
-          const order = {
-            id: (id = button.getAttribute("data-order")),
-            title: container.querySelector(".title").innerText,
-            price: container.querySelector(".price").innerText,
-            desc: container.querySelector(".desc").innerText
-          };
+      $pies = $("#pies");
 
-          localStorage.setItem("order", JSON.stringify(order));
+      let getTemplate = (item) => `
+      <div class="pie">
+        <img src="images/${item.id}.png" alt="${item.description}" />
+        <div class="columns">
+          <div class="title">${item.title}</div>
+          <div class="price">$${item.price}</div>
+        </div>
+        <p class="desc">${item.description}</p>
+        <button data-id="${item.id}">Order</button>
+      </div>`;
 
-          const url = window.location.href.replace("pies.html", "order.html");
-          window.location.href = url;
+      $.get("/data/pies.json")
+        .done((data) => {
+
+          data.forEach((item) => {
+            $pies.append(getTemplate(item));
+          });
+
+          $orderButtons = $("button[data-id]");
+
+          $orderButtons.click((e) => {
+
+            $button = $(e.currentTarget);
+            $parent = $button.parent();
+
+            const order = {
+              id: $button.data("id"),
+              title: $parent.find(".title").text(),
+              price: $parent.find(".price").text(),
+              desc: $parent.find(".desc").text()
+            };
+
+            localStorage.setItem("order", JSON.stringify(order));
+
+            const url = window.location.href.replace("pies.html", "order.html");
+            window.location.href = url;
+
+          });
+
         });
-      });
     });
   </script>
 </html>
