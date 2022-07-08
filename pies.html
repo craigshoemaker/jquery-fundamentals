@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Pies | Bethany's Pie Shop</title>
     <link rel="stylesheet" href="site.css" type="text/css" />
+    <script type="text/javascript" src="scripts/jquery-3.6.0.js"></script>
   </head>
   <body>
     <header>
@@ -26,7 +27,27 @@
         <h1>Pies</h1>
 
         <section class="columns-desktop" id="pies">
-          <!-- Generated HTML goes here -->
+          <section class="columns-desktop">
+            <div class="pie">
+              <img src="images/apple-pie.png" alt="Apple Pie" />
+              <div class="columns">
+                <div class="title">Apple Pie</div>
+                <div class="price">$12.95</div>
+              </div>
+              <p class="description">Our famous apple pie</p>
+              <button data-order="apple-pie">Order</button>
+            </div>
+  
+            <div class="pie">
+              <img src="images/cherry-pie.png" alt="Cherry Pie" />
+              <div class="columns">
+                <div class="title">Cherry Pie</div>
+                <div class="price">$15.95</div>
+              </div>
+              <p class="description">A summer classic!</p>
+              <button data-order="cherry-pie">Order</button>
+            </div>
+          </section>
         </section>
 
       </article>
@@ -43,5 +64,27 @@
     </footer>
   </body>
   <script>
+    /*
+    Selecting elements by ID, class, and attribute
+    Selecting elements with a CSS selector
+    Using first, last, and find
+    */
+
+    $(() => {
+
+      let $piesContainer = $('#pies');
+      let $pies = $('.pie');
+
+      let $cherryImg = $('img[src="images/cherry-pie.png"]');
+      let $titleAndDescription = $('.title, .description');
+      
+      let first = $('.pie').first();
+      let last = $('.pie').last();
+      
+      let title = $('#pies').first(".pie").find('.title').text();
+
+      console.log(title);
+
+    });
   </script>
 </html>
