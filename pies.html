@@ -31,10 +31,10 @@
       <article>
         <h1>Pies</h1>
 
-        <img src="images/apple-pie.png" id="pie" alt="Apple Pie" />
         <div>
           <button id="order">Order</button>
         </div>
+        <img src="images/apple-pie.png" id="pie" alt="Apple Pie" />
       </article>
     </main>
 
@@ -50,34 +50,29 @@
   </body>
   <script>
     /*
-    Add, remove, and  toggle classes
-    Detect if an element has a class
-    Read and write element dimensions
-    Read an element's CSS rules
+    Add a click handler
+    Show and hide elements
+    Detecting if an element is visible
+    Respond to mouse events
     */
    $(() => {
     
     $('#order').click(e => {
 
-      //$('#pie').addClass('big-border');
+      if($('#pie').is(':visible')) {
+        $('#pie').hide();
+      } else {
+        $('#pie').show();
+      }
 
-      // if($('#pie').hasClass('big-border')) {
-      //   $('#pie').removeClass('big-border');
-      // } else {
-      //   $('#pie').addClass('big-border');
-      // }
+    });
 
-      //$('#pie').toggleClass('big-border');
+    $('#order').mouseover(e => {
+      $('#pie').hide();
+    });
 
-      //$('#pie').toggle();
-
-      // $('#pie').width('500px');
-      // $('#pie').height('500px');
-
-      // $('#pie').css({ border: "30px solid #a394be"});
-      // let border = $('#pie').css('border');
-      // console.log(border);
-
+    $('#order').mouseout(e => {
+      $('#pie').show();
     });
 
    });
