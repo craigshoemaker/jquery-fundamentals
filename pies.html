@@ -50,30 +50,17 @@
   </body>
   <script>
     /*
-    Add a click handler
-    Show and hide elements
-    Detecting if an element is visible
-    Respond to mouse events
+    Fetching data
+    Add elements in a loop
+    Make bound elements interactive
+    Sort elements alphabetically
     */
    $(() => {
     
-    $('#order').click(e => {
-
-      if($('#pie').is(':visible')) {
-        $('#pie').hide();
-      } else {
-        $('#pie').show();
-      }
-
-    });
-
-    $('#order').mouseover(e => {
-      $('#pie').hide();
-    });
-
-    $('#order').mouseout(e => {
-      $('#pie').show();
-    });
+    $.get("/data/pies.json")
+        .done((data) => {
+          console.log(data);
+        });
 
    });
   </script>
