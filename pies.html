@@ -11,7 +11,7 @@
   <body>
     <header>
       <nav>
-        <ul>
+        <ul id="header-links">
           <li><a href="/">Home</a></li>
           <li><a href="pies.html">Pies</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -55,7 +55,7 @@
 
     <footer>
       <nav>
-        <ul>
+        <ul id="footer-links">
           <li><a href="/">Home</a></li>
           <li><a href="pies.html">Pies</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -72,6 +72,8 @@
 
     $(() => {
 
+      //*
+
       let $piesContainer = $('#pies');
       let $pies = $('.pie');
 
@@ -84,6 +86,8 @@
       let title = $('#pies').first(".pie").find('.title').text();
 
       console.log(title);
+
+      // */
 
     });
   </script>
