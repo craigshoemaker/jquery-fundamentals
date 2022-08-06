@@ -59,25 +59,27 @@
     
     $('#order').click(e => {
 
-      //$('#pie').addClass('big-border');
+      //*
+      $('#pie').addClass('big-border');
 
-      // if($('#pie').hasClass('big-border')) {
-      //   $('#pie').removeClass('big-border');
-      // } else {
-      //   $('#pie').addClass('big-border');
-      // }
+      if($('#pie').hasClass('big-border')) {
+        $('#pie').removeClass('big-border');
+      } else {
+        $('#pie').addClass('big-border');
+      }
 
-      //$('#pie').toggleClass('big-border');
+      $('#pie').toggleClass('big-border');
 
-      //$('#pie').toggle();
+      $('#pie').toggle();
 
-      // $('#pie').width('500px');
-      // $('#pie').height('500px');
+      $('#pie').width('500px');
+      $('#pie').height('500px');
 
-      // $('#pie').css({ border: "30px solid #a394be"});
-      // let border = $('#pie').css('border');
-      // console.log(border);
+      $('#pie').css({ border: "30px solid #a394be"});
+      let border = $('#pie').css('border');
+      console.log(border);
 
+      // */
     });
 
    });
