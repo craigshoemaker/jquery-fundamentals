@@ -55,26 +55,26 @@
     Detecting if an element is visible
     Respond to mouse events
     */
-   $(() => {
-    
-    $('#order').click(e => {
+    $(() => {
 
-      if($('#pie').is(':visible')) {
+      $('#order').click(e => {
+
+        if($('#pie').is(':visible')) {
+          $('#pie').hide();
+        } else {
+          $('#pie').show();
+        }
+
+      });
+
+      $('#order').mouseover(e => {
         $('#pie').hide();
-      } else {
+      });
+
+      $('#order').mouseout(e => {
         $('#pie').show();
-      }
+      });
 
     });
-
-    $('#order').mouseover(e => {
-      $('#pie').hide();
-    });
-
-    $('#order').mouseout(e => {
-      $('#pie').show();
-    });
-
-   });
   </script>
 </html>
