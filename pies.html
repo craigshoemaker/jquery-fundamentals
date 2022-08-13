@@ -63,16 +63,18 @@
       $.get("/data/pies.json")
         .done((data) => {
 
+          console.log(`Fetch result: ${ data.length } pies loaded`);
+
           data.forEach((item) => {
             $pies.append(getTemplate(item));
           });
 
-          $orderButtons = $("button[data-id]");
+          const $orderButtons = $("button[data-id]");
 
           $orderButtons.click((e) => {
 
-            $button = $(e.currentTarget);
-            $parent = $button.parent();
+            const $button = $(e.currentTarget);
+            const $parent = $button.parent();
 
             const order = {
               id: $button.data("id"),
